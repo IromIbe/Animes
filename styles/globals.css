@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,7 +17,59 @@ a {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
+
+
+.activeLink::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -6px;
+  background: #b6e3ff;
+  transition: width 0.2s;
+}
+
+.activeLink:hover::after {
+  width: 100%;
+}
+.mobile-nav {
+  display: none;
+}
+
+.nav-links-mobile {
+  position: absolute;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  top: 4.4rem;
+  left: 0;
+  /* transition: height 8s ease-in-out; */
+  width: 100%;
+  background: linear-gradient(200deg, #090c15, #0e111d);
+}
+.line {
+  text-align: center;
+  width: 1px;
+  height: 120px;
+  background: #eaeef2;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile-nav {
+    display: block;
+  }
+  .all-links {
+    display: none;
+  }
+  .activeLink:hover::after {
+    width: 0;
+  }
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {
