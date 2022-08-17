@@ -1,62 +1,48 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import Search from './search';
-import axios from 'axios';
+import { InferGetServerSidePropsType } from 'next'
+import { GetServerSideProps } from 'next'
 
 
-const options = {
-  method: 'GET',
-  url: 'https://anime-db.p.rapidapi.com/anime',
-  params: {
-    page: '1',
-    size: '10',
-    search: 'Fullmetal',
-    genres: 'Fantasy,Drama',
-    sortBy: 'ranking',
-    sortOrder: 'asc'
-  },
-  headers: {
-    'X-RapidAPI-Key': '333f0328d0mshd591e4a1b5727a8p1e8128jsn7f294b234191',
-    'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
-  }
-};
+// interface movieObj {
+//   id: number;
+//   original_title: string;
+//   backdrop_path: string;
+//   overview: string;
+// }
+// interface IMoviesProps {
+//   allMovies: movieObj[]
+// }
 
-
-export async function  getServerSideProps  ()  {
-  const res = axios.request(options);
-  console.log(res, "hiii");
+export const getServerSideProps: GetServerSideProps = async ()  => {
+  const API_KEY = process.env.API_KEY;
+  const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+// const data = await res.json();
 
   return {
     props: {
-// allMovies: res.data
+ allMovies: await res.json()
     }
 }
 }
-// interface movieObj {
-//   title: string;
-//   synopsis: string;
-//   image: string;
-// }
-// interface IMoviesProps {
-//   allMovies: movieObj[];
-// }
 
 
-function MoviesPage ({res}: any) {
-  console.log(res, "hiii");
 
+function MoviesPage ({allMovies}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  console.log(allMovies, "allMovies");
 
-  // const [allMovies, setAllMovies] = useState<string[]>([]);
-//   console.log(allMovies, "heyy");
-//   // const axios = require('axios').default;
-// useEffect(() => {
-//   axios.request(options).then(function (response) {
-//     console.log(response.data.data);
-//   }).catch(function (error) {
-//     console.error(error);
-//   });
-// },[])
+  // useEffect(() => {
+  //   const api_Key = process.env.API_KEY;
+  //   console.log(api_Key, "api_Key");
 
+  //   axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${api_Key}&language=en-US&page=1`)
+  //   .then(res => {
+  //     setAllMovies(res.data.results);
+  //   }).catch(err => {
+  //     console.log(err);
+  //   }
+  //   );
+  // },[allMovies]);
   return (
     <div>
 <div className="movie-body">
