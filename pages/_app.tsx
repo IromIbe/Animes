@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import {ThemeProvider} from "next-themes"
 import { useRouter } from 'next/router'
 import {useState, useEffect} from 'react'
-
+import {Layout} from "../pages/components/layout"
 function Loading () {
   const router = useRouter()
 const[loading, setLoading] = useState<boolean>(false)
@@ -33,10 +33,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
   <>
+
   {/* <Loading/> */}
   <ThemeProvider attribute='class'>
+  <Layout>
   <Component {...pageProps} />
+  </Layout>
     </ThemeProvider>
+
   </>
 
   )
