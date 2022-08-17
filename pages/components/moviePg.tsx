@@ -28,7 +28,7 @@ export async function  getServerSideProps  ()  {
 
   return {
     props: {
-allMovies:res
+// allMovies: res.data
     }
 }
 }
