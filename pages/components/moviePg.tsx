@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Search } from './search';
+import Search from './search';
 import axios from 'axios';
 
 
@@ -42,7 +42,7 @@ export async function  getServerSideProps  ()  {
 // }
 
 
-export function MoviesPage ({res}: any) {
+function MoviesPage ({res}: any) {
   console.log(res, "hiii");
 
 
@@ -70,3 +70,4 @@ export function MoviesPage ({res}: any) {
     </div>
   );
 }
+export default MoviesPage;

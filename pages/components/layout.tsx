@@ -1,9 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
-import {Header} from "./header";
-import {Search} from "./search";
+import Header from "./header";
+import Search from "./search";
 
-export function Layout({ children }: any) {
+ function Layout({ children }: any) {
   const router = useRouter();
   const path = router.pathname;
   const displayPath =
@@ -21,3 +21,4 @@ export function Layout({ children }: any) {
   );
 }
 
+export default Layout;

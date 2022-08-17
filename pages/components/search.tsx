@@ -4,7 +4,7 @@ import { useState } from 'react';
  interface ISearchProps {
 }
 
-export function Search (props: ISearchProps) {
+function Search (props: ISearchProps) {
     const [search, setSearch] = useState<string>("");
   return (
     <div>
@@ -12,3 +12,4 @@ export function Search (props: ISearchProps) {
     </div>
   );
 }
+export default Search;

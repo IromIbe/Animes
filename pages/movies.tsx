@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { MoviesPage } from './components/moviePg';
+import  MoviesPage from './components/moviePg';
 export interface IMoviesProps {
 }
 

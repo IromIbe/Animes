@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { Logo } from '../logo';
+import Logo from '../logo';
 
 export interface IAppProps {
 }
 
-export function HomePage (props: IAppProps) {
+ function HomePage (props: IAppProps) {
   return (
     <div style={{
         background: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(cinema.svg)"}} className="relative w-full h-[100%] md:h-[100vh] md:bg-center bg-left bg-no-repeat bg-origin-border" >
@@ -25,3 +25,5 @@ export function HomePage (props: IAppProps) {
     </div>
   );
 }
+
+export default HomePage;

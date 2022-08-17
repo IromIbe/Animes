@@ -5,7 +5,7 @@ import {FaBars} from "react-icons/fa";
 import {ImCross} from "react-icons/im";
 import {MdDarkMode} from "react-icons/md";
 import {MdOutlineLightMode} from "react-icons/md";
-import { Logo } from "./logo";
+import Logo  from "./logo";
 
 import { useTheme } from "next-themes";
 
@@ -30,7 +30,7 @@ const navLinks = [
   },
 ];
 
-export function Header(props: IHeaderProps) {
+function Header(props: IHeaderProps) {
   const [active, setActive] = useState<string>("Home");
   const [isMobile, setIsMobile] = useState<boolean>(false);
 const {theme, setTheme} = useTheme()
@@ -109,4 +109,4 @@ const {theme, setTheme} = useTheme()
   );
 }
 
-// #b6e3ff
+export default Header;

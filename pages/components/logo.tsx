@@ -3,7 +3,7 @@ import Link from 'next/link';
 export interface ILogoProps {
 }
 
-export function Logo (props: ILogoProps) {
+function Logo (props: ILogoProps) {
   return (
     <div className='w-full h-7'>
         <Link href="/">
@@ -13,3 +13,4 @@ export function Logo (props: ILogoProps) {
     </div>
   );
 }
+export default Logo;
