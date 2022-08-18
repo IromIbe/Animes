@@ -3,14 +3,14 @@ import { useRouter } from "next/router";
 import Header from "./header";
 import Search from "./search";
 
- function Layout({ children }: any) {
+function Layout({ children }: any) {
   const router = useRouter();
   const path = router.pathname;
   const displayPath =
     path === "/movies" ||
     path === "/now_playing" ||
     path === "/top-rated" ||
-    path === "/upcoming"
+    path === "/upcoming";
 
   return (
     <div className=''>
