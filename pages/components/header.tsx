@@ -36,7 +36,7 @@ function Header(props: IHeaderProps) {
   const { theme, setTheme } = useTheme();
   return (
     <div
-      className='sticky relative z-50 drop-shadow-[0.5_35px_35px_ #0e111d)] top-0 nav-bar flex justify-between items-center w-full h-[5.2rem]  lg:px-12 px-8 py-5 border-t-8'
+      className='sticky relative z-index-[50] drop-shadow-[0.5_35px_35px_ #0e111d)] top-0 nav-bar flex justify-between items-center w-full h-[5.2rem]  lg:px-12 px-8 py-5 border-t-8'
       style={{ background: "linear-gradient(200deg, #090c15,  #0e111d)" }}
     >
       <div className='logo'>

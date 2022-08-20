@@ -22,7 +22,7 @@ function HomePage(props: IAppProps) {
           click!
         </h1>
         <div className='btns flex  justify-between items-center mt-6'>
-          <Link href='/movies'>
+          <Link href='/movies/all_movies'>
             <button className='px-4 py-2 border-2 rounded-[20px] my-3 mx-3 hover:bg-[#00800020]'>
               See All Movies
             </button>

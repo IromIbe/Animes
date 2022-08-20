@@ -10,7 +10,8 @@ function Layout({ children }: any) {
     path === "/movies" ||
     path === "/now_playing" ||
     path === "/top-rated" ||
-    path === "/upcoming";
+    path === "/upcoming" ||
+    path === "/movie/[id]";
 
   return (
     <div className=''>
