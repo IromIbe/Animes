@@ -5,8 +5,7 @@ import { IMoviesProps } from "./moviePg";
 import Link from "next/link";
 
 function MovieCard({ movie }: { movie: IMoviesProps }) {
-  const { id, title, backdrop_path, overview, poster_path, vote_average } =
-    movie;
+  const { id, title, overview, poster_path, vote_average } = movie;
   return (
     <Link href={`/movie/${movie.id}`}>
       <div

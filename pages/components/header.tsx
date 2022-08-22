@@ -1,10 +1,11 @@
 import * as React from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
+import { WatchCartContext } from "../../context/WatchCartContext";
 import Logo from "./logo";
 
 import { useTheme } from "next-themes";
@@ -28,15 +29,21 @@ const navLinks = [
     href: "/upcoming",
     label: "upcoming",
   },
+  {
+    href: "/watchlist",
+    label: "watchlist",
+  },
 ];
 
 function Header(props: IHeaderProps) {
   const [active, setActive] = useState<string>("Home");
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
+  const { cart } = useContext(WatchCartContext);
+
   return (
     <div
-      className='sticky relative z-index-[50] drop-shadow-[0.5_35px_35px_ #0e111d)] top-0 nav-bar flex justify-between items-center w-full h-[5.2rem]  lg:px-12 px-8 py-5 border-t-8'
+      className='sticky relative z-50 drop-shadow-[0.5_35px_35px_ #0e111d)] top-0 nav-bar flex justify-between items-center w-full h-[5.2rem]  lg:px-12 px-8 py-5 border-t-8'
       style={{ background: "linear-gradient(200deg, #090c15,  #0e111d)" }}
     >
       <div className='logo'>
@@ -48,7 +55,7 @@ function Header(props: IHeaderProps) {
       </div>
 
       <div
-        className={`links flex justify-between items-center lg:flex-[.5]  ${
+        className={`links flex justify-between items-center lg:flex-[.6]  ${
           isMobile ? "flex-col" : "flex-row"
         }`}
       >
@@ -64,7 +71,7 @@ function Header(props: IHeaderProps) {
             <>
               <button
                 key={index}
-                className='relative'
+                className={`relative${link.label === "watchlist" ? "" : ""}`}
                 onClick={() => setActive(link.label)}
               >
                 <li>
@@ -80,6 +87,11 @@ function Header(props: IHeaderProps) {
                     </span>
                   </Link>
                 </li>
+                {link.label === "watchlist" ? (
+                  <span className='absolute top-0 right-[-4px] text-[10px] bg-[red] text-white px-2 rounded-full'>
+                    {cart.length}
+                  </span>
+                ) : null}
               </button>
             </>
           ))}

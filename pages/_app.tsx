@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import { BeatLoader } from "react-spinners";
 import Layout from "../pages/components/layout";
+import WatchCartProvider from "../context/WatchCartContext";
 
 function Loading() {
   return (
@@ -26,9 +27,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       {/* <Loading/> */}
       {loading ? (
         <ThemeProvider attribute='class'>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <WatchCartProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </WatchCartProvider>
         </ThemeProvider>
       ) : (
         <Loading />

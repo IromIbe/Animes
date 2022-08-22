@@ -11,7 +11,8 @@ function Layout({ children }: any) {
     path === "/now_playing" ||
     path === "/top-rated" ||
     path === "/upcoming" ||
-    path === "/movie/[id]";
+    path === "/movie/[id]" ||
+    path === "/watchlist";
 
   return (
     <div className=''>
