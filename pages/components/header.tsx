@@ -5,14 +5,17 @@ import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
+import { useRouter } from "next/router";
 import { WatchCartContext } from "../../context/WatchCartContext";
 import Logo from "./logo";
-
 import { useTheme } from "next-themes";
 
-export interface IHeaderProps {}
+interface IHeaderProps {
+  href: string;
+  label: string;
+}
 
-const navLinks = [
+const navLinks: IHeaderProps[] = [
   {
     href: "/movies",
     label: "Home",
@@ -35,8 +38,15 @@ const navLinks = [
   },
 ];
 
-function Header(props: IHeaderProps) {
-  const [active, setActive] = useState<string>("Home");
+function Header() {
+  const router = useRouter();
+
+  const activeNav: IHeaderProps = navLinks.find((link) =>
+    router.pathname === link.href ? link.label : null
+  );
+
+  const [active, setActive] = useState<string>(activeNav?.label);
+
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
   const { cart } = useContext(WatchCartContext);

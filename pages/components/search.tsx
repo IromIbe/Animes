@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
-import IMoviesProps from "./moviePg";
+import { IMoviesProps } from "./moviePg";
 
 interface ISearchProps {
   setMovies: (curMovies: IMoviesProps[]) => void;
@@ -12,14 +12,22 @@ function Search({ setMovies, value, onChange }: ISearchProps) {
   const api_Key = process.env.API_KEY;
 
   useEffect(() => {
-    async function handleFetch() {
+    async function handleFetch(value:string) {
+      if (!value) {
+        return
+     }
+
       const res = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${api_Key}&language=en-US&query=${value}`
       );
       const data = await res.json();
-      setMovies(data.results);
+      const moviesWithOnlyPosters =
+      data.results &&
+      data.results.filter((item:any) => (item.poster_path != null ? item : null));
+    setMovies(moviesWithOnlyPosters);
+
     }
-    handleFetch();
+    handleFetch(value);
   }, [value]);
   return (
     <div>

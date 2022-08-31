@@ -13,15 +13,14 @@ export interface IMoviesProps {
   vote_average: number;
 }
 
-interface movieList {
+export interface movieList {
   allMovies: IMoviesProps[];
-  // page: number;
-  // setPage: (page: number) => void;
-  setMovies: (movies: IMoviesProps[] | null) => void;
+  page: number;
+  setPage: (page: number) => void;
+  setMovieList: any;
 }
 
-function MoviesPage({ allMovies, setMovies }: movieList) {
-  console.log(allMovies, "allMovies");
+function MoviesPage({ allMovies, setMovieList, page, setPage }: movieList) {
 
   const [search, setSearch] = useState<string>("");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +31,7 @@ function MoviesPage({ allMovies, setMovies }: movieList) {
       <div className='movie-body'>
         <div className='search flex justify-center items-center my-4'>
           <Search
-            setMovies={setMovies}
+            setMovies={setMovieList}
             value={search}
             onChange={handleChange}
           />
@@ -46,14 +45,8 @@ function MoviesPage({ allMovies, setMovies }: movieList) {
             ))}
           </div>
           <div className='flex justify-center items-center py-6'>
-            {/* <Move
-              direction='backward'
-              //  page={page} setPage={setPage}
-            />
-            <Move
-              direction='forward'
-              //  page={page} setPage={setPage}
-            /> */}
+            <Move direction='backward' page={page} setPage={setPage} />
+            <Move direction='forward' page={page} setPage={setPage} />
           </div>
         </div>
       </div>

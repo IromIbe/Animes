@@ -24,14 +24,13 @@ function MovieId({ movieInfo }: { movieInfo: IMovieIdProps }) {
     tagline,
   } = movieInfo;
   const { setCart, cart } = useContext(WatchCartContext);
-  console.log(cart, "carttt");
 
   const addToWatchList = (id: number) => {
     const existingCartItem = cart.find(
       (cartItem: IMovieIdProps) => cartItem.id === id
     );
     if (existingCartItem) {
-      return;
+      return alert("already in watchlist");
     }
     return setCart([...cart, movieInfo]);
   };

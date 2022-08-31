@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import Logo from "../logo";
+import Logo from "./logo";
 
 export interface IAppProps {}
 

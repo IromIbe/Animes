@@ -4,22 +4,17 @@ import { IoIosArrowBack } from "react-icons/io";
 
 type Props = {
   direction: string;
-  setPage: (page: number) => void;
+  setPage: any;
   page: number;
 };
 
 function Move({ direction, setPage, page }: Props) {
-  console.log(page, "pagw");
-
   const moveNext = () => {
-    console.log("next");
-
-    setPage((prev) => prev + 1);
+    setPage((prev: any) => prev + 1);
   };
   const moveBack = () => {
-    console.log("back");
 
-    setPage((prev) => prev - 1);
+    setPage((prev: any) => prev - 1);
   };
   return (
     <div
@@ -29,7 +24,7 @@ function Move({ direction, setPage, page }: Props) {
       {direction === "forward" ? (
         <IoIosArrowForward />
       ) : direction === "backward" ? (
-        <IoIosArrowBack />
+        page > 1 && <IoIosArrowBack />
       ) : null}
     </div>
   );
