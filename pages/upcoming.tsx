@@ -14,7 +14,11 @@ function Upcoming() {
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_Key}&language=en-US&page=${page}`
       )
       .then((res) => {
-        setMovieList(res.data.results);
+        const data = res.data
+        const moviesWithOnlyPosters =
+        data.results &&
+        data.results.filter((item:any) => (item.poster_path != null ? item : null));
+        setMovieList(moviesWithOnlyPosters);
       });
   }, [page]);
   return (
