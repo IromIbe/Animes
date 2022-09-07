@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { WatchCartContext } from "../../context/WatchCartContext";
 import Logo from "./logo";
 import { useTheme } from "next-themes";
+import { AnyAaaaRecord } from "dns";
 
 interface IHeaderProps {
   href: string;
@@ -41,11 +42,15 @@ const navLinks: IHeaderProps[] = [
 function Header() {
   const router = useRouter();
 
-  const activeNav: IHeaderProps = navLinks.find((link) =>
-    router.pathname === link.href ? link.label : null
+  const activeNav = navLinks.find((link) =>
+    router.pathname === link.href ? link : null
   );
+  console.log(activeNav, "activeNav");
 
-  const [active, setActive] = useState<string>(activeNav?.label);
+
+  const [active, setActive] = useState(activeNav?.label);
+  console.log(active, "active");
+
 
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
