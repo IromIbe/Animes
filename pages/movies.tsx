@@ -8,7 +8,6 @@ function Movies({}) {
   console.log(page, "papa");
 
   const [movieList, setMovieList] = useState<IMoviesProps[]>([]);
-  console.log(movieList, "mmm");
 
   useEffect(() => {
     const api_Key = process.env.API_KEY;

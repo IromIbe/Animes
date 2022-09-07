@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { WatchCartContext } from "../../context/WatchCartContext";
 import { IMovieIdProps } from "./movieId";
 import axios from "axios";
