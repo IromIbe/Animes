@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { log } from "console";
 import React from "react";
 import { IMoviesProps } from "./moviePg";
 import Link from "next/link";

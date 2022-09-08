@@ -5,7 +5,7 @@ import { InferGetServerSidePropsType } from "next";
 import axios from "axios";
 function Movies({}) {
   const [page, setPage] = useState<number>(1);
-  console.log(page, "papa");
+
 
   const [movieList, setMovieList] = useState<IMoviesProps[]>([]);
 

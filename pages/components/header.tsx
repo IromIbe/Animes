@@ -45,11 +45,11 @@ function Header() {
   const activeNav = navLinks.find((link) =>
     router.pathname === link.href ? link : null
   );
-  console.log(activeNav, "activeNav");
+
 
 
   const [active, setActive] = useState(activeNav?.label);
-  console.log(active, "active");
+
 
 
   const [isMobile, setIsMobile] = useState<boolean>(false);
